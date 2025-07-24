@@ -180,7 +180,7 @@ graph TD
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/victor-busami/usalama-wa-watu-final.git
+git clone https://github.com/victor-busami/usalama_jijini.git
 cd usalama-wa-watu-final
 ```
 
