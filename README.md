@@ -484,7 +484,7 @@ This project incorporates research from:
 
 - **Lead Developer**: Victor Busami
 - **GitHub**: [@victor-busami](https://github.com/victor-busami)
-- **Project Repository**: [usalama-wa-watu-final](https://github.com/victor-busami/usalama-wa-watu-final)
+- **Project Repository**: [usalama-wa-watu-final](https://github.com/victor-busami/usalama_jijini)
 
 **Contributors**:
 - [@Kendi7](https://github.com/Kendi7)
