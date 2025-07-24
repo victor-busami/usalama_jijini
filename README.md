@@ -1,11 +1,11 @@
-# 🛡️ Usalama wa Watu - Nairobi Crime Reporting AI System
+# 🛡️ usalama_jijini - Nairobi Crime Reporting AI System
 
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![AI](https://img.shields.io/badge/AI-Powered-green?style=for-the-badge)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-Object_Detection-blue?style=for-the-badge)
 
-> **"Usalama wa Watu"** (Swahili for "Safety of the People") - An AI-powered crime reporting and analysis system designed to enhance public safety in Nairobi County through intelligent incident reporting, real-time sentiment analysis, and automated threat assessment.
+> **"usalama_jijini"** (Swahili for "Safety of the People") - An AI-powered crime reporting and analysis system designed to enhance public safety in Nairobi County through intelligent incident reporting, real-time sentiment analysis, and automated threat assessment.
 
 ---
 
@@ -30,7 +30,7 @@
 
 ## 🚀 Overview
 
-**Usalama wa Watu** is a cutting-edge AI-powered crime reporting system specifically designed for Nairobi County. This comprehensive platform combines multiple machine learning technologies to provide intelligent crime incident analysis, automated threat assessment, and real-time safety monitoring.
+**usalama_jijini** is a cutting-edge AI-powered crime reporting system specifically designed for Nairobi County. This comprehensive platform combines multiple machine learning technologies to provide intelligent crime incident analysis, automated threat assessment, and real-time safety monitoring.
 
 ### 🎯 Mission Statement
 
@@ -366,7 +366,7 @@ CMD ["streamlit", "run", "app.py"]
 
 ## 👥 Team Collaboration Guide
 
-**Usalama wa Watu** is a collaborative software project built by a team of five developers to improve community safety and incident reporting through technology.
+**usalama_jijini** is a collaborative software project built by a team of five developers to improve community safety and incident reporting through technology.
 
 ### 🚀 **Project Overview**
 
@@ -379,7 +379,7 @@ Each developer must follow these steps:
 #### 1. **Clone the repository and create a branch**
 
 ```bash
-git clone https://github.com/victor-busami/usalama-wa-watu-final.git
+git clone https://github.com/victor-busami/usalama_jijini.git
 cd usalama-wa-watu-final
 git checkout -b your-branch-name
 git push -u origin your-branch-name
