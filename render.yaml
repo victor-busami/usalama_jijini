@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: usalama-wa-watu-streamlit
+    name: usalama-jijini
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: startCommand: streamlit run app/app.py --server.port 10000 --server.address 0.0.0.0
+    startCommand: streamlit run app.py --server.port $PORT --server.address=0.0.0.0 --server.enableCORS=false --server.enableXsrfProtection=false
     envVars:
       - key: PYTHON_VERSION
         value: "3.10"
+      - key: STREAMLIT_SERVER_HEADLESS
+        value: "true"
