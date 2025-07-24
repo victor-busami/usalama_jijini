@@ -486,6 +486,13 @@ This project incorporates research from:
 - **GitHub**: [@victor-busami](https://github.com/victor-busami)
 - **Project Repository**: [usalama-wa-watu-final](https://github.com/victor-busami/usalama-wa-watu-final)
 
+**Contributors**:
+- [@Kendi7](https://github.com/Kendi7)
+- [@kamene22](https://github.com/kamene22)
+- [@BlessedConso001](https://github.com/BlessedConso001)
+- [@FinaAkinyi](https://github.com/FinaAkinyi)
+- [@victor-busami](https://github.com/victor-busami)
+
 ### 🆘 **Support**
 
 - **Issues**: [GitHub Issues](https://github.com/victor-busami/usalama-wa-watu-final/issues)
