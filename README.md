@@ -7,6 +7,9 @@
 
 > **"usalama_jijini"** (Swahili for "Safety of the People") - An AI-powered crime reporting and analysis system designed to enhance public safety in Nairobi County through intelligent incident reporting, real-time sentiment analysis, and automated threat assessment.
 
+🎥 [▶️ Watch the Usalama Jijini Demo](https://victor-busami.github.io/usalama_jijini/)
+
+
 ---
 
 ## 📋 Table of Contents
