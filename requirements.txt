@@ -1,0 +1,13 @@
+streamlit
+pandas
+Pillow
+python-dotenv
+transformers
+torch
+streamlit-folium
+folium
+ultralytics
+base64
+requests
+sqlite3
+time
