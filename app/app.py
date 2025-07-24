@@ -484,3 +484,134 @@ elif page == "View Reports":
             st.metric("Unique Locations", df['location'].nunique())
         with colD:
             st.metric("Very Negative Sentiment", (df['sentiment'].str.contains('Very Negative')).sum())
+
+  # --- PDF Download Feature ---
+        import io
+        from reportlab.lib.pagesizes import letter
+        from reportlab.pdfgen import canvas
+        def create_pdf(dataframe):
+            buffer = io.BytesIO()
+            c = canvas.Canvas(buffer, pagesize=letter)
+            width, height = letter
+            c.setFont("Helvetica-Bold", 14)
+            c.drawString(30, height - 40, "Nairobi County Crime Reports")
+            c.setFont("Helvetica", 10)
+            y = height - 70
+            for i, row in dataframe.iterrows():
+                text = f"Location: {row['location']} | Sentiment: {row['sentiment']} | Urgency: {row['urgency']} | Desc: {row['description'][:50]}"
+                c.drawString(30, y, text)
+                y -= 18
+                if y < 50:
+                    c.showPage()
+                    y = height - 40
+            c.save()
+            buffer.seek(0)
+            return buffer
+        pdf_buffer = create_pdf(df)
+        st.download_button(
+            label="Download Reports as PDF",
+            data=pdf_buffer,
+            file_name="crime_reports.pdf",
+            mime="application/pdf"
+        )
+        # --- Filter Controls ---
+        st.subheader("Filter Reports")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            location_options = df['location'].unique().tolist()
+            selected_locations = st.multiselect("Location", location_options)
+        with col2:
+            urgency_options = df['urgency'].unique().tolist()
+            selected_urgencies = st.multiselect("Urgency", urgency_options)
+        with col3:
+            sentiment_options = df['sentiment'].unique().tolist()
+            selected_sentiments = st.multiselect("Sentiment", sentiment_options)
+        # If nothing is selected in any filter, show all
+        if not selected_locations:
+            selected_locations = location_options
+        if not selected_urgencies:
+            selected_urgencies = urgency_options
+        if not selected_sentiments:
+            selected_sentiments = sentiment_options
+        # Apply filters
+        filtered_df = df[
+            df['location'].isin(selected_locations) &
+            df['urgency'].isin(selected_urgencies) &
+            df['sentiment'].isin(selected_sentiments)
+        ]
+        st.markdown("---")
+        # --- Expander Layout ---
+        for idx, row in filtered_df.iterrows():
+            with st.expander(f"{row['location']} | {row['sentiment']} | {row['urgency']} | {row['description'][:30]}..."):
+                st.markdown('''<div style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 24px 18px 18px 18px; margin-bottom: 8px;">''', unsafe_allow_html=True)
+                card_cols = st.columns([1, 2])
+                # Image section
+                with card_cols[0]:
+                    st.markdown('<h4 style="margin-bottom:8px;">Image</h4>', unsafe_allow_html=True)
+                    if row['image'] and os.path.exists(row['image']):
+                        st.image(row['image'], caption="Uploaded Image", use_container_width=True)
+                    else:
+                        st.write("No image uploaded.")
+                # Info section
+                with card_cols[1]:
+                    st.markdown('<h4 style="margin-bottom:8px;">Details</h4>', unsafe_allow_html=True)
+                    st.markdown(f"**Location:** {row['location']}")
+                    st.markdown(f"**Sentiment:** {row['sentiment']}")
+                    # Visually outstanding urgency for different levels
+                    if 'High' in row['urgency']:
+                        st.markdown(f'''<div style="background-color:#ff4d4d; color:white; font-weight:bold; font-size:1.3em; padding:6px 12px; border-radius:6px; display:inline-block; margin-bottom:8px;">🚨 Urgency: {row['urgency']} 🚨</div>''', unsafe_allow_html=True)
+                    elif 'Medium/Low' in row['urgency']:
+                        st.markdown(f'''<div style="background-color:#ffa500; color:white; font-weight:bold; font-size:1.2em; padding:6px 12px; border-radius:6px; display:inline-block; margin-bottom:8px;">🟡 Urgency: {row['urgency']}</div>''', unsafe_allow_html=True)
+                    elif 'Unknown' in row['urgency']:
+                        st.markdown(f'''<div style="background-color:#888888; color:white; font-weight:bold; font-size:1.1em; padding:6px 12px; border-radius:6px; display:inline-block; margin-bottom:8px;">❓ Urgency: {row['urgency']}</div>''', unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"**Urgency:** {row['urgency']}")
+                    st.markdown(f"**Image Sentiment:** {row.get('image_sentiment', 'N/A')}")
+                    st.markdown(f"**Image Urgency:** {row.get('image_urgency', 'N/A')}")
+                    st.markdown(f"**Description:** {row['description']}")
+                    st.markdown(f"**Image Caption:** {row.get('image_caption', 'N/A')}")
+                    st.markdown(f"**Detected Objects:** {row['objects']}")
+                    st.markdown(f"**Contact:** {row['contact']}")
+                st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown("---")
+        # --- Map Visualization (optional, keep at bottom) ---
+        st.subheader("Map of Reports")
+        nairobi_center = [-1.286389, 36.817223]
+        m = folium.Map(location=nairobi_center, zoom_start=11)
+        sub_county_coords = {
+            "Westlands": [-1.2647, 36.8121],
+            "Kasarani": [-1.2195, 36.8961],
+            "Lang'ata": [-1.3621, 36.7517],
+            "Embakasi": [-1.3341, 36.8947],
+            "Starehe": [-1.2833, 36.8500],
+            "Dagoretti": [-1.3081, 36.7381],
+            "Kamukunji": [-1.2833, 36.8500],
+            "Makadara": [-1.3000, 36.8667],
+            "Mathare": [-1.2667, 36.8667],
+            "Kibra": [-1.3171, 36.7924],
+            "Roysambu": [-1.2100, 36.9000],
+            "Ruaraka": [-1.2500, 36.8833],
+            "Other": nairobi_center
+        }
+        for idx, row in filtered_df.iterrows():
+            coords = sub_county_coords.get(row['location'], nairobi_center)
+            sentiment = row.get('sentiment', '').lower()
+            if 'negative' in sentiment or 'urgent' in sentiment:
+                color = 'red'
+            elif 'neutral' in sentiment:
+                color = 'orange'
+            elif 'positive' in sentiment:
+                color = 'green'
+            else:
+                color = 'blue'
+            popup = folium.Popup(f"<b>Description:</b> {row['description']}<br>"
+                                 f"<b>Sentiment:</b> {row['sentiment']}<br>"
+                                 f"<b>Urgency:</b> {row.get('urgency', '')}<br>"
+                                 f"<b>Objects:</b> {row['objects']}<br>"
+                                 f"<b>Contact:</b> {row['contact']}", max_width=300)
+            folium.Marker(
+                location=coords,
+                popup=popup,
+                icon=folium.Icon(color=color)
+            ).add_to(m)
+        st_folium(m, width=700, height=500) 
