@@ -168,3 +168,89 @@ Whether it's suspicious activity, petty theft, or public disturbance — your vo
 
 🚀 **Let’s make Nairobi safer, one report at a time!**
         """)
+    st.stop()
+
+st.title("Nairobi County Crime Reporting System")
+
+# Initialize session state for reports
+def init_reports():
+    if 'reports' not in st.session_state:
+        st.session_state['reports'] = []
+
+init_reports()
+
+# Load sentiment analysis pipeline once
+@st.cache_resource
+def get_sentiment_pipeline():
+    return pipeline("sentiment-analysis", model="nlptown/bert-base-multilingual-uncased-sentiment")
+
+sentiment_pipeline = get_sentiment_pipeline()
+
+# Load YOLOv8 model once
+@st.cache_resource
+def get_yolo_model():
+    return YOLO('yolov8n.pt')
+
+yolo_model = get_yolo_model()
+
+# Add local image captioning model loader and function
+@st.cache_resource
+def get_captioning_model():
+    model = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+    feature_extractor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+    tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+    return model, feature_extractor, tokenizer
+
+def get_local_image_caption(image_path):
+    model, feature_extractor, tokenizer = get_captioning_model()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    image = Image.open(image_path).convert("RGB")
+    pixel_values = feature_extractor(images=[image], return_tensors="pt").pixel_values.to(device)
+    output_ids = model.generate(pixel_values, max_length=16)  # greedy decoding only
+    caption = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+    return caption
+
+def map_caption_to_sentiment(caption):
+    negative_keywords = [
+        'violence', 'injury', 'attack', 'gun', 'knife', 'blood', 'fire', 'explosion', 'fight', 'crying', 'sad', 'danger', 'accident', 'protest', 'riot', 'dead', 'death', 'hurt', 'wound'
+    ]
+    positive_keywords = [
+        'smile', 'happy', 'safe', 'peace', 'joy', 'celebration', 'calm', 'help', 'rescue', 'hug', 'love'
+    ]
+    caption_lower = caption.lower()
+    if any(word in caption_lower for word in negative_keywords):
+        return "Very Negative"
+    elif any(word in caption_lower for word in positive_keywords):
+        return "Very Positive"
+    else:
+        return "Neutral"
+
+def map_image_urgency(image_sentiment):
+    sentiment_to_urgency = {
+        'Very Negative': ('High', '🚨'),
+        'Very Positive': ('Very Low', '🎉'),
+        'Neutral': ('Medium/Low', '🟡'),
+    }
+    return sentiment_to_urgency.get(image_sentiment, ('Medium/Low', '🟡'))
+
+def combine_sentiment_and_urgency(text_sentiment, text_urgency, text_urgency_emoji, image_sentiment, image_urgency, image_urgency_emoji):
+    # Priority: High > Medium/Low > Very Low
+    urgency_order = {'High': 3, 'Medium/Low': 2, 'Very Low': 1}
+    # Pick the higher urgency
+    if urgency_order.get(text_urgency, 2) >= urgency_order.get(image_urgency, 2):
+        combined_urgency = text_urgency
+        combined_urgency_emoji = text_urgency_emoji
+    else:
+        combined_urgency = image_urgency
+        combined_urgency_emoji = image_urgency_emoji
+    # Sentiment: Very Negative > Negative > Neutral > Positive > Very Positive
+    sentiment_order = {
+        'Very Negative': 1, 'Negative': 2, 'Neutral': 3, 'Positive': 4, 'Very Positive': 5
+    }
+    # Use the more negative sentiment
+    if sentiment_order.get(text_sentiment.split()[0], 3) <= sentiment_order.get(image_sentiment.split()[0], 3):
+        combined_sentiment = text_sentiment
+    else:
+        combined_sentiment = image_sentiment
+    return combined_sentiment, combined_urgency, combined_urgency_emoji
