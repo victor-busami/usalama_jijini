@@ -212,14 +212,7 @@ pip install -r requirements.txt
 # Transformers models will auto-download on first use
 ```
 
-5. **Initialize Database**
-
-```bash
-# Database will be automatically created on first run
-python app.py
-```
-
-6. **Run the Application**
+5. **Run the Application**
 
 ```bash
 streamlit run app.py
