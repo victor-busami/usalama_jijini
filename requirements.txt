@@ -67,7 +67,7 @@ ultralytics-thop==2.0.14
 urllib3==2.5.0
 watchdog==6.0.0
 xyzservices==2025.4.0
-python-dotenv==1.0.1git add requirements.txt
+python-dotenv==1.0.1
 
 reportlab==4.2.0
    
