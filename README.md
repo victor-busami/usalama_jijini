@@ -1,5 +1,7 @@
 # 🛡️ usalama_jijini - Nairobi Crime Reporting AI System
 
+🔗 [View Interactive Gamma Presentation](https://gamma.app/docs/Usalama-Jijini-Smart-Crime-Reporting-App-yxbejhjsuqmh25z)
+
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![AI](https://img.shields.io/badge/AI-Powered-green?style=for-the-badge)
