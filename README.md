@@ -366,7 +366,7 @@ CMD ["streamlit", "run", "app.py"]
 
 ## 👥 Team Collaboration Guide
 
-**Usalama wa Watu** is a collaborative software project built by a team of five developers to improve community safety and incident reporting through technology.
+**usalama_jijini** is a collaborative software project built by a team of five developers to improve community safety and incident reporting through technology.
 
 ### 🚀 **Project Overview**
 
@@ -379,8 +379,8 @@ Each developer must follow these steps:
 #### 1. **Clone the repository and create a branch**
 
 ```bash
-git clone https://github.com/victor-busami/usalama-wa-watu-final.git
-cd usalama-wa-watu-final
+git clone https://github.com/victor-busami/usalama_jijini.git
+cd usalama_jijini
 git checkout -b your-branch-name
 git push -u origin your-branch-name
 ```
