@@ -254,3 +254,67 @@ def combine_sentiment_and_urgency(text_sentiment, text_urgency, text_urgency_emo
     else:
         combined_sentiment = image_sentiment
     return combined_sentiment, combined_urgency, combined_urgency_emoji
+
+# --- Database Setup ---
+def init_db():
+    conn = sqlite3.connect('reports.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS reports (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        description TEXT,
+        image TEXT,
+        location TEXT,
+        contact TEXT,
+        sentiment TEXT,
+        urgency TEXT,
+        objects TEXT,
+        image_sentiment TEXT,
+        image_caption TEXT,
+        image_urgency TEXT
+    )''')
+    conn.commit()
+    conn.close()
+init_db()
+
+def save_report_to_db(report):
+    conn = sqlite3.connect('reports.db')
+    c = conn.cursor()
+    c.execute('''INSERT INTO reports (description, image, location, contact, sentiment, urgency, objects, image_sentiment, image_caption, image_urgency)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+              (report['description'], report['image'], report['location'], report['contact'], report['sentiment'], report['urgency'], report['objects'], report.get('image_sentiment'), report.get('image_caption'), report.get('image_urgency')))
+    conn.commit()
+    conn.close()
+
+def load_reports_from_db():
+    conn = sqlite3.connect('reports.db')
+    c = conn.cursor()
+    c.execute('SELECT description, image, location, contact, sentiment, urgency, objects, image_sentiment, image_caption, image_urgency FROM reports')
+    rows = c.fetchall()
+    conn.close()
+    keys = ['description', 'image', 'location', 'contact', 'sentiment', 'urgency', 'objects', 'image_sentiment', 'image_caption', 'image_urgency']
+    return [dict(zip(keys, row)) for row in rows]
+
+# --- Auth ---
+def login():
+    if st.session_state.get('logged_in', False):
+        if st.button('Logout', key='logout_button'):
+            st.session_state['logged_in'] = False
+            st.rerun()
+        st.success('Login successful!')
+        return True
+    st.subheader('Login')
+    username = st.text_input('Username', key='login_username')
+    password = st.text_input('Password', type='password', key='login_password')
+    # Use a less common password to avoid browser breach warnings
+    ADMIN_USERNAME = 'admin'
+    ADMIN_PASSWORD = 'Admin!2024Secure'  # Change to a strong, unique password
+    if st.button('Login', key='login_button'):
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            st.session_state['logged_in'] = True
+            st.success('Login successful!')
+            st.rerun()
+        else:
+            st.error('Invalid credentials')
+    # Display admin credentials below the login form
+    st.info(f"Admin Login - Username: {ADMIN_USERNAME} | Password: {ADMIN_PASSWORD}")
+    return st.session_state.get('logged_in', False)
