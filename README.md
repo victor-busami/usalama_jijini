@@ -181,7 +181,7 @@ graph TD
 
 ```bash
 git clone https://github.com/victor-busami/usalama_jijini.git
-cd usalama-wa-watu-final
+cd usalama_jijini
 ```
 
 2. **Create Virtual Environment**
