@@ -14,34 +14,34 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
-- [🚀 Overview](#-overview)
-- [✨ Key Features](#-key-features)
-- [🤖 AI Technologies](#-ai-technologies)
-- [🏗️ System Architecture](#️-system-architecture)
-- [📊 Dashboard Features](#-dashboard-features)
-- [🛠️ Installation & Setup](#️-installation--setup)
-- [🔧 Usage Guide](#-usage-guide)
-- [📱 User Interface](#-user-interface)
-- [🔒 Security & Authentication](#-security--authentication)
-- [📈 Analytics & Reporting](#-analytics--reporting)
-- [🌍 Deployment](#-deployment)
-- [👥 Team Collaboration Guide](#-team-collaboration-guide)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+- [ Overview](#-overview)
+- [ Key Features](#-key-features)
+- [ AI Technologies](#-ai-technologies)
+- [ System Architecture](#️-system-architecture)
+- [ Dashboard Features](#-dashboard-features)
+- [ Installation & Setup](#️-installation--setup)
+- [ Usage Guide](#-usage-guide)
+- [ User Interface](#-user-interface)
+- [ Security & Authentication](#-security--authentication)
+- [ Analytics & Reporting](#-analytics--reporting)
+- [ Deployment](#-deployment)
+- [ Team Collaboration Guide](#-team-collaboration-guide)
+- [ Contributing](#-contributing)
+- [ License](#-license)
 
 ---
 
-## 🚀 Overview
+##  Overview
 
 **usalama_jijini** is a cutting-edge AI-powered crime reporting system specifically designed for Nairobi County. This comprehensive platform combines multiple machine learning technologies to provide intelligent crime incident analysis, automated threat assessment, and real-time safety monitoring.
 
-### 🎯 Mission Statement
+###  Mission Statement
 
 To leverage artificial intelligence and modern web technologies to create a safer Nairobi by enabling citizens to report incidents efficiently while providing law enforcement with intelligent insights for better resource allocation and response prioritization.
 
-### 🌟 Why This Project Matters
+###  Why This Project Matters
 
 - **Real-time Crime Intelligence**: Instant analysis of reported incidents using advanced AI
 - **Community Empowerment**: Easy-to-use interface for citizens to report safety concerns
@@ -51,30 +51,30 @@ To leverage artificial intelligence and modern web technologies to create a safe
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-### 🔍 **Intelligent Crime Analysis**
+###  **Intelligent Crime Analysis**
 
 - **Multi-Modal AI Processing**: Analyzes both text descriptions and uploaded images
 - **Real-time Sentiment Analysis**: Uses BERT-based multilingual models to assess incident severity
 - **Object Detection**: YOLOv8-powered image analysis to identify weapons, vehicles, and other relevant objects
 - **Automated Threat Assessment**: Combines text and image analysis for comprehensive risk evaluation
 
-### 📊 **Advanced Reporting System**
+###  **Advanced Reporting System**
 
 - **Interactive Crime Reports**: Structured incident reporting with location mapping
 - **Priority-Based Urgency Classification**: Automatic categorization (High 🚨 / Medium 🟡 / Low ✅)
 - **Multi-Source Data Integration**: Text descriptions + Image evidence + Location data
 - **Contact Information Management**: Secure handling of reporter contact details
 
-### 🗺️ **Geographic Intelligence**
+###  **Geographic Intelligence**
 
 - **Interactive Maps**: Folium-powered visualization of crime incidents across Nairobi
 - **Sub-County Filtering**: Detailed breakdown by Nairobi's administrative areas
 - **Heat Map Analysis**: Visual representation of crime concentration areas
 - **Location-Based Alerts**: Geographic threat assessment capabilities
 
-### 📈 **Analytics Dashboard**
+###  **Analytics Dashboard**
 
 - **Real-time Statistics**: Live crime reporting metrics and trends
 - **Sentiment Distribution**: Analysis of incident severity patterns
@@ -83,9 +83,9 @@ To leverage artificial intelligence and modern web technologies to create a safe
 
 ---
 
-## 🤖 AI Technologies
+##  AI Technologies
 
-### 🧠 **Natural Language Processing**
+###  **Natural Language Processing**
 
 ```python
 # Multilingual Sentiment Analysis
@@ -94,7 +94,7 @@ Capability: 5-star rating sentiment classification
 Languages: Multiple (optimized for English and Swahili contexts)
 ```
 
-### 👁️ **Computer Vision**
+###  **Computer Vision**
 
 ```python
 # Object Detection
@@ -108,7 +108,7 @@ Architecture: Vision Transformer + GPT-2
 Purpose: Automatic scene description for sentiment analysis
 ```
 
-### 🔗 **Multi-Modal Fusion**
+###  **Multi-Modal Fusion**
 
 - **Combined Analysis**: Merges text sentiment with image-derived insights
 - **Hierarchical Urgency**: Intelligent priority assignment based on multiple data sources
@@ -116,7 +116,7 @@ Purpose: Automatic scene description for sentiment analysis
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```mermaid
 graph TD
@@ -136,7 +136,7 @@ graph TD
     K --> M[Interactive Maps]
 ```
 
-### 💾 **Data Flow**
+###  **Data Flow**
 
 1. **Input Layer**: User submits incident report (text + optional image)
 2. **AI Processing**: Parallel processing through NLP and Computer Vision pipelines
@@ -147,22 +147,22 @@ graph TD
 
 ---
 
-## 📊 Dashboard Features
+##  Dashboard Features
 
-### 🔐 **Admin Dashboard**
+###  **Admin Dashboard**
 
 - **Comprehensive Report Management**: View, filter, and analyze all incident reports
 - **Multi-Dimensional Filtering**: By location, urgency, sentiment, and time
 - **Export Functionality**: Generate PDF reports for official use
 
-### 📍 **Interactive Mapping**
+###  **Interactive Mapping**
 
 - **Real-time Incident Plotting**: Live updates on Nairobi crime map
 - **Color-Coded Markers**: Visual urgency indicators (Red/Orange/Green)
 - **Detailed Popups**: Complete incident information on map interaction
 - **Sub-County Analysis**: Drill-down capabilities for specific areas
 
-### 📈 **Analytics Features**
+###  **Analytics Features**
 
 - **Total Reports Counter**: Real-time incident tracking
 - **High Urgency Alerts**: Priority incident highlighting
@@ -171,16 +171,16 @@ graph TD
 
 ---
 
-## 🛠️ Installation & Setup
+##  Installation & Setup
 
-### 📋 **Prerequisites**
+###  **Prerequisites**
 
 - Python 3.8+
 - 4GB+ RAM (for AI model loading)
 - 2GB+ free disk space
 - Internet connection (for initial model downloads)
 
-### ⚙️ **Installation Steps**
+###  **Installation Steps**
 
 1. **Clone the Repository**
 
@@ -218,16 +218,16 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-### 🌐 **Access the Application**
+###  **Access the Application**
 
 - **Local URL**: `http://localhost:8501`
 - **Network URL**: `http://[your-ip]:8501`
 
 ---
 
-## 🔧 Usage Guide
+##  Usage Guide
 
-### 👤 **For Citizens (Report Submission)**
+###  **For Citizens (Report Submission)**
 
 1. **Navigate to "Report Crime"** in the sidebar
 2. **Fill out the incident form**:
@@ -238,7 +238,7 @@ streamlit run app.py
 3. **Submit Report**: System automatically analyzes and categorizes
 4. **Confirmation**: Receive submission confirmation with toast notification
 
-### 👮 **For Administrators (Report Management)**
+###  **For Administrators (Report Management)**
 
 1. **Login** with admin credentials:
    - **Username**: `admin`
@@ -253,16 +253,16 @@ streamlit run app.py
 
 ---
 
-## 📱 User Interface
+##  User Interface
 
-### 🎨 **Design Philosophy**
+###  **Design Philosophy**
 
 - **Clean & Intuitive**: Streamlit-powered modern interface
 - **Mobile-Responsive**: Works seamlessly on all devices
 - **Accessibility-First**: Clear navigation and visual indicators
 - **Cultural Sensitivity**: Designed for Nairobi's diverse population
 
-### 🔄 **User Experience Flow**
+###  **User Experience Flow**
 
 ```
 Landing Page → Report Selection → Form Filling → AI Analysis → Confirmation
@@ -270,7 +270,7 @@ Landing Page → Report Selection → Form Filling → AI Analysis → Confirmat
 Admin Login → Dashboard Access → Report Analysis → Action Planning
 ```
 
-### 🎯 **Visual Elements**
+###  **Visual Elements**
 
 - **Urgency Indicators**: Color-coded priority levels (🚨🟡✅)
 - **Interactive Cards**: Expandable report summaries
@@ -279,9 +279,9 @@ Admin Login → Dashboard Access → Report Analysis → Action Planning
 
 ---
 
-## 🔒 Security & Authentication
+##  Security & Authentication
 
-### 🛡️ **Security Features**
+###  **Security Features**
 
 - **Admin Authentication**: Secure login system for report access
 - **Session Management**: Streamlit session state handling
@@ -289,7 +289,7 @@ Admin Login → Dashboard Access → Report Analysis → Action Planning
 - **Input Validation**: Comprehensive form validation
 - **Access Control**: Role-based permissions
 
-### 🔐 **Privacy Protection**
+###  **Privacy Protection**
 
 - **Optional Contact Info**: Citizens can report anonymously
 - **Data Minimization**: Only necessary information collected
@@ -298,9 +298,9 @@ Admin Login → Dashboard Access → Report Analysis → Action Planning
 
 ---
 
-## 📈 Analytics & Reporting
+##  Analytics & Reporting
 
-### 📊 **Key Metrics**
+###  **Key Metrics**
 
 - **Total Incident Reports**: Real-time counter
 - **High Priority Cases**: Urgent incident tracking
@@ -308,7 +308,7 @@ Admin Login → Dashboard Access → Report Analysis → Action Planning
 - **Sentiment Analysis**: Negative incident patterns
 - **Response Efficiency**: Time-based performance metrics
 
-### 📋 **Report Export Features**
+###  **Report Export Features**
 
 - **PDF Generation**: Professional report formatting using ReportLab
 - **Filtered Exports**: Custom report generation based on selected criteria
@@ -317,9 +317,9 @@ Admin Login → Dashboard Access → Report Analysis → Action Planning
 
 ---
 
-## 🌍 Deployment
+##  Deployment
 
-### ☁️ **Cloud Deployment Options**
+###  **Cloud Deployment Options**
 
 #### **Streamlit Cloud** (Recommended)
 
@@ -348,7 +348,7 @@ services:
 web: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
 ```
 
-### 🐳 **Docker Deployment**
+###  **Docker Deployment**
 
 ```dockerfile
 FROM python:3.9-slim
@@ -362,15 +362,15 @@ CMD ["streamlit", "run", "app.py"]
 
 ---
 
-## 👥 Team Collaboration Guide
+##  Team Collaboration Guide
 
 **usalama_jijini** is a collaborative software project built by a team of five developers to improve community safety and incident reporting through technology.
 
-### 🚀 **Project Overview**
+###  **Project Overview**
 
 This project is in active development by a team of contributors working in parallel on separate branches to ensure smooth development and integration.
 
-### 🔧 **Branch Setup & Workflow**
+###  **Branch Setup & Workflow**
 
 Each developer must follow these steps:
 
@@ -400,7 +400,7 @@ git push
 4. Assign a reviewer
 5. Wait for approval before merging
 
-### 🛡️ **Branch Protection Rules**
+###  **Branch Protection Rules**
 
 The `main` branch is protected with the following rules:
 
@@ -412,13 +412,13 @@ The `main` branch is protected with the following rules:
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
-### 🌟 **We Welcome Contributions!**
+###  **We Welcome Contributions!**
 
 Whether you're fixing bugs, adding features, improving documentation, or suggesting enhancements, your contributions are valuable to making Nairobi safer.
 
-### 📝 **Contribution Guidelines**
+###  **Contribution Guidelines**
 
 1. **Fork the Repository**
 2. **Create a Feature Branch** (`git checkout -b feature/amazing-feature`)
@@ -428,13 +428,13 @@ Whether you're fixing bugs, adding features, improving documentation, or suggest
 6. **Push to Branch** (`git push origin feature/amazing-feature`)
 7. **Open a Pull Request**
 
-### 🐛 **Bug Reports**
+###  **Bug Reports**
 
 - Use GitHub Issues to report bugs
 - Include detailed reproduction steps
 - Provide system information and screenshots
 
-### 💡 **Feature Requests**
+###  **Feature Requests**
 
 - Open a GitHub Issue with the "enhancement" label
 - Describe the feature and its potential impact
@@ -442,11 +442,11 @@ Whether you're fixing bugs, adding features, improving documentation, or suggest
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-### 📜 **License Summary**
+###  **License Summary**
 
 - ✅ Commercial use allowed
 - ✅ Modification allowed
@@ -457,9 +457,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
-### 🏆 **Special Thanks**
+###  **Special Thanks**
 
 - **Nairobi County Government** for supporting community safety initiatives
 - **Hugging Face** for providing state-of-the-art AI models
@@ -467,7 +467,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - **Streamlit** for the amazing web framework
 - **OpenStreetMap Contributors** for mapping data
 
-### 🎓 **Research & Development**
+###  **Research & Development**
 
 This project incorporates research from:
 
@@ -478,9 +478,9 @@ This project incorporates research from:
 
 ---
 
-## 📞 Contact & Support
+##  Contact & Support
 
-### 👨‍💻 **Development Team**
+###  **Development Team**
 
 - **Lead Developer**: Victor Busami
 - **GitHub**: [@victor-busami](https://github.com/victor-busami)
@@ -493,7 +493,7 @@ This project incorporates research from:
 - [@FinaAkinyi](https://github.com/FinaAkinyi)
 - [@victor-busami](https://github.com/victor-busami)
 
-### 🆘 **Support**
+###  **Support**
 
 - **Issues**: [GitHub Issues](https://github.com/victor-busami/usalama-wa-watu-final/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/victor-busami/usalama-wa-watu-final/discussions)
@@ -501,7 +501,7 @@ This project incorporates research from:
 
 ---
 
-## 🚀 **Happy Collaborating! 💻🚀**
+##  **Happy Collaborating! **
 
 _Together, we're building a safer Nairobi through technology and community collaboration._
 
